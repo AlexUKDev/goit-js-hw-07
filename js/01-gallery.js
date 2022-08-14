@@ -54,8 +54,6 @@ function onImgClick(e){
     return
   }
 
-  console.log(e.target)
-
     // получаем ссылку большого размера для отображения в галерее
   let originalImgUrl = e.target.dataset.source;
 
