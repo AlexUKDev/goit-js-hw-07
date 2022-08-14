@@ -31,7 +31,6 @@ function renderFullTamplate() {
 renderFullTamplate();
 
 galleryContainerRef.addEventListener('click', onImgClick)
-document.addEventListener('click', onBodyClick)
 
 function onImgClick(e){
   // отменяем дефолтное поведение ссылок
