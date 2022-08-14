@@ -55,11 +55,3 @@ gallery.on('show.simplelightbox', function () {
 
 }
 
-
-function onBodyClick(evt){
-  console.log(evt.target)
-
-  // clases sl-wrapper simple-lightbox
-  // sl-close
-}
-
