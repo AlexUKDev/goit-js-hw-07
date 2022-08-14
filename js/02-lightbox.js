@@ -2,7 +2,7 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 
-console.log(galleryItems);
+// console.log(galleryItems);
 
 const galleryContainerRef = document.querySelector('ul.gallery');
 
@@ -41,7 +41,7 @@ function onImgClick(e){
     return
   }
 
-  console.log(e.target)
+  // console.log(e.target)
 
     // получаем ссылку большого размера для отображения в галерее
   let originalImgUrl = e.target.dataset.source;
@@ -50,7 +50,7 @@ function onImgClick(e){
 gallery.on('show.simplelightbox', function () {
 	// Do something…
 });
-  console.log(gallery)
+  // console.log(gallery)
 
 }
 
