@@ -48,7 +48,7 @@ galleryContainerRef.addEventListener('click', onImgClick)
 function onImgClick(e){
   // отменяем дефолтное поведение ссылок
   e.preventDefault();
-
+  console.dir(e)
   //  фильтр цели делигации
   if (e.target.nodeName !== "IMG"){
     return
@@ -59,24 +59,55 @@ function onImgClick(e){
 
   const instance = basicLightbox.create(`
   <img src="${originalImgUrl}" width="800" height="600">
-  `);
+  `, {
+    /*
+     * Function that gets executed before the lightbox will be shown.
+     * Returning false will prevent the lightbox from showing.
+     *  Функция, которая выполняется до закрытия лайтбокса.
+     * Возврат false предотвратит закрытие лайтбокса.
+     */
+    onShow: (instance) => {
+      document.addEventListener('keydown', onEscPress);
+    },
+    /*
+     * Function that gets executed before the lightbox closes.
+     * Returning false will prevent the lightbox from closing.
+     * Функция, которая выполняется до закрытия лайтбокса.
+     * Возврат false предотвратит закрытие лайтбокса.
+     */
+    onClose: (instance) => {
+      document.removeEventListener('keydown',onEscPress);
+    }
+  });
   
   instance.show()
 
-  
-  if(basicLightbox.visible()){
-    console.log("Модальное окно открыто, подписываюсь на прослушку Escape")
-    document.addEventListener('keydown', escClose)
-  }
-  
-  function escClose({key}){
+  // let checkIsOpenModal = instance.visible();
+
+  // if(checkIsOpenModal){
+  //   console.log("Модальное окно открыто, подписываюсь на прослушку Escape")
+  //   document.addEventListener('keydown', escClose)
+  //   document.addEventListener('click', remuveEvtListenerEscClose)
+  // }
+
+  function onEscPress({key}){
+    console.dir(key)
     // console.log(key)
     if (key === 'Escape'){
       instance.close();
-      document.removeEventListener('keydown',escClose);
-      console.log("Описываюсь от прослушки на нажатие Escape")
+      console.log("Хей лови месыдж. Описываюсь от прослушки на нажатие Escape")
     }
   }
+
+
+// function remuveEvtListenerEscClose(){
+//   if(checkIsOpenModal === false) {
+//     document.removeEventListener('keydown',escClose);
+//     console.log("Описываюсь от прослушки на нажатие Escape. Модальное ЗАКРИЛОСЬ ДРУГИМ СПОСОБОМ")
+//     document.remuveEventListener('click', remuveEvtListenerEscClose);
+//     console.log("Консолю факт удаления и своего слушателя :)")
+//   }
+// }
 
 
 }

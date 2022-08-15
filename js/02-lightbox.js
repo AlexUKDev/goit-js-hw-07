@@ -2,8 +2,6 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 
-// console.log(galleryItems);
-
 const galleryContainerRef = document.querySelector('ul.gallery');
 
 function createHtmlTamplate({preview, original, description }) {
@@ -32,25 +30,29 @@ renderFullTamplate();
 
 galleryContainerRef.addEventListener('click', onImgClick)
 
+
+let gallery = new SimpleLightbox ('.gallery a',{ 
+  captionType:'attr',
+  captionsData: "alt", 
+  captionDelay: 250 
+});
+
 function onImgClick(e){
   // отменяем дефолтное поведение ссылок
   e.preventDefault();
-
   //  фильтр цели делигации
   if (e.target.nodeName !== "IMG"){
     return
   }
-
   // console.log(e.target)
 
-    // получаем ссылку большого размера для отображения в галерее
-  let originalImgUrl = e.target.dataset.source;
+  //   // получаем ссылку большого размера для отображения в галерее
+  // let originalImgUrl = e.target.dataset.source;
 
-  let gallery = new SimpleLightbox('.gallery a', {  captionType:'attr',captionsData: "alt", captionDelay: 250 });
 gallery.on('show.simplelightbox', function () {
 	// Do something…
 });
-  // console.log(gallery)
+
 
 }
 
