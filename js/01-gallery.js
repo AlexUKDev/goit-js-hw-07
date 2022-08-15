@@ -77,6 +77,7 @@ function onImgClick(e){
      */
     onClose: (instance) => {
       document.removeEventListener('keydown',onEscPress);
+      console.log("onClose: Описываюсь от прослушки keydown без нажатия Escape")
     }
   });
   
@@ -90,14 +91,14 @@ function onImgClick(e){
   //   document.addEventListener('click', remuveEvtListenerEscClose)
   // }
 
-  function onEscPress({key}){
-    console.dir(key)
-    // console.log(key)
-    if (key === 'Escape'){
-      instance.close();
-      console.log("Хей лови месыдж. Описываюсь от прослушки на нажатие Escape")
-    }
-  }
+  // function onEscPress({key}){
+  //   console.dir(key)
+  //   // console.log(key)
+  //   if (key === 'Escape'){
+  //     instance.close();
+  //     console.log("Хей лови месыдж. Описываюсь от прослушки на нажатие Escape")
+  //   }
+  // }
 
 
 // function remuveEvtListenerEscClose(){
