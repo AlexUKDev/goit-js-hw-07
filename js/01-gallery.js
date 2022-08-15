@@ -48,7 +48,7 @@ galleryContainerRef.addEventListener('click', onImgClick)
 function onImgClick(e){
   // отменяем дефолтное поведение ссылок
   e.preventDefault();
-  console.dir(e)
+  // console.dir(e)
   //  фильтр цели делигации
   if (e.target.nodeName !== "IMG"){
     return
@@ -68,6 +68,7 @@ function onImgClick(e){
      */
     onShow: (instance) => {
       document.addEventListener('keydown', onEscPress);
+      console.log("onShow: Модальное окно открыто, подписываюсь на прослушку Escape")
     },
     /*
      * Function that gets executed before the lightbox closes.
@@ -91,14 +92,14 @@ function onImgClick(e){
   //   document.addEventListener('click', remuveEvtListenerEscClose)
   // }
 
-  // function onEscPress({key}){
-  //   console.dir(key)
-  //   // console.log(key)
-  //   if (key === 'Escape'){
-  //     instance.close();
-  //     console.log("Хей лови месыдж. Описываюсь от прослушки на нажатие Escape")
-  //   }
-  // }
+  function onEscPress({key}){
+    console.dir(key)
+    // console.log(key)
+    if (key === 'Escape'){
+      instance.close();
+      console.log("Хей лови месыдж. Описываюсь от прослушки keydown после нажатия на Escape")
+    }
+  }
 
 
 // function remuveEvtListenerEscClose(){
